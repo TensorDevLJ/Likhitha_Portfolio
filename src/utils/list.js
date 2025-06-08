@@ -21,6 +21,11 @@ import {
   Code2Icon,
   FolderCode,
   ActivitySquareIcon,
+  Award,
+  Folder,
+  User,
+  MessageCircle,
+  Home,
 } from "lucide-react";
 import {
   FaGithub,
@@ -53,56 +58,15 @@ import {
   SiGooglegemini,
 } from "react-icons/si";
 
-import Home from "../section/Home";
-import { Skills } from "../section/Skills";
-import { Project } from "../section/Project";
-import About from "../section/About";
-import Contact from "../section/Contact";
-
 export const SECTION_LIST = [
-  {
-    id: 1,
-    displayText: "HOME",
-    sectionID: "home",
-    component: Home,
-    icon: GoHomeFill,
-    subSection: 1,
-  },
-  {
-    id: 2,
-    displayText: "SKILLS",
-    sectionID: "skills",
-    component: Skills,
-    icon: FiAward,
-    subSection: 2,
-  },
-  {
-    id: 3,
-    displayText: "PROJECTS",
-    sectionID: "projects",
-    component: Project,
-    icon: GoProjectRoadmap,
-    subSection: 2,
-  },
-  {
-    id: 4,
-    displayText: "ABOUT",
-    sectionID: "about",
-    component: About,
-    icon: IoIosDocument,
-    subSection: 4,
-  },
-  {
-    id: 5,
-    displayText: "CONTACT",
-    sectionID: "contact",
-    component: Contact,
-    icon: ContactRound,
-    subSection: 4,
-  },
+  { id: 1, displayText: "HOME", sectionID: "home", icon: Home },
+  { id: 2, displayText: "SKILLS", sectionID: "skills", icon: Award },
+  { id: 3, displayText: "PROJECTS", sectionID: "projects", icon: Folder },
+  { id: 4, displayText: "ABOUT", sectionID: "about", icon: User },
+  { id: 5, displayText: "CONTACT", sectionID: "contact", icon: MessageCircle },
 ];
 
-export const TECH_ICONS = {
+const TECH_ICONS = {
   React: { component: ReactIcon, name: "React" },
   "Tailwind CSS": { component: SiTailwindcss, name: "Tailwind CSS" },
   "Node.js": { component: Node, name: "Node.js" },
@@ -127,7 +91,15 @@ export const TECH_ICONS = {
   Python: { component: Cpu, name: "Python" },
 };
 
-export const PROJECT_LIST = [
+export const TECH_STACK = [
+  { name: "React", color: "#61DAFB", icon: Component },
+  { name: "Node.js", color: "#68A063", icon: Server },
+  { name: "MongoDB", color: "#47A248", icon: Database },
+  { name: "Python", color: "#3776AB", icon: Cpu },
+  { name: "AWS", color: "#FF9900", icon: Globe },
+  { name: "Express", color: "#000000", icon: Code },
+];
+export const PROJECTS = [
   {
     title: "Wanderlust",
     description:
