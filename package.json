@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "TAILWIND_DISABLE_OXIDE=true NODE_OPTIONS=--max-old-space-size=4096 vite",
-    "build": "vite build",
+    "build": "TAILWIND_DISABLE_OXIDE=true NODE_OPTIONS=--max-old-space-size=4096 vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
