@@ -26,6 +26,8 @@ import {
   User,
   MessageCircle,
   Home,
+  BookOpen,
+  Users,
 } from "lucide-react";
 import {
   FaGithub,
@@ -62,8 +64,10 @@ export const SECTION_LIST = [
   { id: 1, displayText: "HOME", sectionID: "home", icon: Home },
   { id: 2, displayText: "SKILLS", sectionID: "skills", icon: Award },
   { id: 3, displayText: "PROJECTS", sectionID: "projects", icon: Folder },
-  { id: 4, displayText: "ABOUT", sectionID: "about", icon: User },
-  { id: 5, displayText: "CONTACT", sectionID: "contact", icon: MessageCircle },
+  { id: 4, displayText: "BLOG", sectionID: "blog", icon: BookOpen },
+  { id: 5, displayText: "COLLABORATIONS", sectionID: "collaborations", icon: Users },
+  { id: 6, displayText: "ABOUT", sectionID: "about", icon: User },
+  { id: 7, displayText: "CONTACT", sectionID: "contact", icon: MessageCircle },
 ];
 
 const TECH_ICONS = {
@@ -202,4 +206,91 @@ export const PROJECTS = [
     liveLink: "https://netflix-gpt.example.com/",
     sourceLink: "https://github.com/Likhithaj123/netflix-gpt.git",
   },
+];
+
+export const BLOG_POSTS = [
+  {
+    id: 1,
+    title: "Building Scalable React Applications with Modern Architecture",
+    excerpt: "Learn how to structure React applications for scalability using modern patterns and best practices.",
+    content: "In this comprehensive guide, we'll explore the essential patterns and practices for building scalable React applications...",
+    date: "2024-01-15",
+    readTime: "8 min read",
+    tags: ["React", "Architecture", "Best Practices"],
+    featured: true,
+    image: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: 2,
+    title: "The Future of Web Development: AI Integration",
+    excerpt: "Exploring how AI is transforming the web development landscape and what developers need to know.",
+    content: "Artificial Intelligence is revolutionizing how we build web applications. From automated code generation to intelligent user interfaces...",
+    date: "2024-01-10",
+    readTime: "6 min read",
+    tags: ["AI", "Web Development", "Future Tech"],
+    featured: true,
+    image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: 3,
+    title: "Optimizing Performance in Node.js Applications",
+    excerpt: "Practical tips and techniques for improving the performance of your Node.js backend services.",
+    content: "Performance optimization is crucial for Node.js applications. In this article, we'll cover caching strategies, database optimization...",
+    date: "2024-01-05",
+    readTime: "10 min read",
+    tags: ["Node.js", "Performance", "Backend"],
+    featured: false,
+    image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800"
+  }
+];
+
+export const COLLABORATIONS = [
+  {
+    id: 1,
+    title: "Open Source Contribution - React Router",
+    description: "Contributed to React Router v6 documentation and bug fixes, helping improve the developer experience for thousands of users.",
+    type: "Open Source",
+    status: "Merged",
+    date: "2024-01-20",
+    technologies: ["React", "TypeScript", "Documentation"],
+    link: "https://github.com/remix-run/react-router",
+    collaborators: ["React Router Team"],
+    impact: "Improved documentation clarity for 50K+ weekly users"
+  },
+  {
+    id: 2,
+    title: "Hackathon Winner - Smart City Solutions",
+    description: "Led a team of 4 developers to create an AI-powered traffic management system that won first place at the National Smart City Hackathon.",
+    type: "Hackathon",
+    status: "Winner",
+    date: "2023-12-15",
+    technologies: ["Python", "YOLOv8", "IoT", "Machine Learning"],
+    link: "https://github.com/your-username/smart-traffic-system",
+    collaborators: ["Team Alpha", "City Planning Department"],
+    impact: "Potential to reduce traffic congestion by 30%"
+  },
+  {
+    id: 3,
+    title: "Mentorship Program - Code for Good",
+    description: "Mentoring junior developers in full-stack development through a 3-month intensive program focused on building real-world applications.",
+    type: "Mentorship",
+    status: "Ongoing",
+    date: "2024-01-01",
+    technologies: ["MERN Stack", "Best Practices", "Career Guidance"],
+    link: "#",
+    collaborators: ["10 Junior Developers", "Code for Good NGO"],
+    impact: "Helped 8 developers land their first tech jobs"
+  },
+  {
+    id: 4,
+    title: "Community Project - Developer Tools",
+    description: "Co-created a VS Code extension that helps developers write better commit messages, now used by 5K+ developers worldwide.",
+    type: "Community",
+    status: "Published",
+    date: "2023-11-10",
+    technologies: ["TypeScript", "VS Code API", "Git"],
+    link: "https://marketplace.visualstudio.com/items?itemName=your-extension",
+    collaborators: ["Developer Community", "VS Code Team"],
+    impact: "5,000+ active installations"
+  }
 ];

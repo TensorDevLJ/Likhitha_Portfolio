@@ -6,8 +6,11 @@ import { SECTION_LIST } from "./utils/list";
 import { HeroSection } from "./components/HeroSection";
 import { SkillsSection } from "./components/SkillsSection";
 import { ProjectsSection } from "./components/ProjectsSection";
+import { BlogSection } from "./components/BlogSection";
+import { CollaborationsSection } from "./components/CollaborationsSection";
 import { ContactSection } from "./components/ContactSection";
 import { AboutSection } from "./components/AboutSection";
+import { AIChatbot } from "./components/AIChatbot";
 
 const App = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -124,6 +127,12 @@ const App = () => {
         <section id="projects">
           <ProjectsSection />
         </section>
+        <section id="blog">
+          <BlogSection />
+        </section>
+        <section id="collaborations">
+          <CollaborationsSection />
+        </section>
         <section id="about">
           <AboutSection />
         </section>
@@ -131,6 +140,9 @@ const App = () => {
           <ContactSection />
         </section>
       </main>
+
+      {/* AI Chatbot */}
+      <AIChatbot />
 
       {/* Background elements */}
       <div className="fixed inset-0 -z-10">
