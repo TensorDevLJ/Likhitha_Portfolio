@@ -8,6 +8,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -38,7 +39,7 @@ const floatingAnimation = {
   },
 };
 
-export const HeroSection = ({ setActiveSection }) => (
+export const HeroSection = () => (
   <motion.section
     variants={containerVariants}
     initial="hidden"
@@ -102,18 +103,19 @@ export const HeroSection = ({ setActiveSection }) => (
         variants={itemVariants}
         className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
       >
-        <motion.button
-          whileHover={{
-            scale: 1.05,
-            boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
-          }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setActiveSection("projects")}
-          className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-semibold flex items-center justify-center gap-2 text-sm sm:text-base"
-        >
-          <Play size={18} />
-          View My Work
-        </motion.button>
+        <Link to="/projects">
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-semibold flex items-center justify-center gap-2 text-sm sm:text-base"
+          >
+            <Play size={18} />
+            View My Work
+          </motion.button>
+        </Link>
 
         <motion.a
           href="#"

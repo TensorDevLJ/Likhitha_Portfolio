@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { SECTION_LIST } from "../../utils/list";
 
-export const Navigation = ({ activeSection, onNavClick }) => {
+export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -18,9 +20,19 @@ export const Navigation = ({ activeSection, onNavClick }) => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMenuOpen]);
 
-  const handleNavClick = (sectionID) => {
-    onNavClick(sectionID);
+  // Close mobile menu when route changes
+  useEffect(() => {
     setIsMenuOpen(false);
+  }, [location]);
+
+  const getRoutePath = (sectionID) => {
+    if (sectionID === 'home') return '/';
+    return `/${sectionID}`;
+  };
+
+  const isActiveRoute = (sectionID) => {
+    const routePath = getRoutePath(sectionID);
+    return location.pathname === routePath;
   };
 
   return (
@@ -32,29 +44,34 @@ export const Navigation = ({ activeSection, onNavClick }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
-          >
-            Likhitha J
-          </motion.div>
+          <Link to="/">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+            >
+              Likhitha J
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6 lg:space-x-8">
             {SECTION_LIST.map((section) => (
-              <motion.button
+              <Link
                 key={section.id}
-                onClick={() => handleNavClick(section.sectionID)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-3 py-2 text-sm font-medium transition-colors ${
-                  activeSection === section.sectionID
-                    ? "text-blue-400 border-b-2 border-blue-400"
-                    : "text-gray-300 hover:text-white"
-                }`}
+                to={getRoutePath(section.sectionID)}
               >
-                {section.displayText}
-              </motion.button>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-3 py-2 text-sm font-medium transition-colors ${
+                    isActiveRoute(section.sectionID)
+                      ? "text-blue-400 border-b-2 border-blue-400"
+                      : "text-gray-300 hover:text-white"
+                  }`}
+                >
+                  {section.displayText}
+                </motion.div>
+              </Link>
             ))}
           </div>
 
@@ -80,21 +97,24 @@ export const Navigation = ({ activeSection, onNavClick }) => {
           >
             <div className="px-4 py-2 space-y-1">
               {SECTION_LIST.map((section) => (
-                <motion.button
+                <Link
                   key={section.id}
-                  onClick={() => handleNavClick(section.sectionID)}
-                  whileHover={{ x: 10 }}
-                  className={`block w-full text-left px-4 py-3 text-sm font-medium transition-colors rounded-lg ${
-                    activeSection === section.sectionID
-                      ? "text-blue-400 bg-blue-400/10"
-                      : "text-gray-300 hover:text-white hover:bg-gray-800"
-                  }`}
+                  to={getRoutePath(section.sectionID)}
                 >
-                  <div className="flex items-center gap-3">
-                    <section.icon size={18} />
-                    {section.displayText}
-                  </div>
-                </motion.button>
+                  <motion.div
+                    whileHover={{ x: 10 }}
+                    className={`block w-full text-left px-4 py-3 text-sm font-medium transition-colors rounded-lg ${
+                      isActiveRoute(section.sectionID)
+                        ? "text-blue-400 bg-blue-400/10"
+                        : "text-gray-300 hover:text-white hover:bg-gray-800"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <section.icon size={18} />
+                      {section.displayText}
+                    </div>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </motion.div>

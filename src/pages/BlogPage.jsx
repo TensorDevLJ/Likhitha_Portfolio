@@ -1,0 +1,410 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Calendar, Clock, Tag, ArrowRight, Search, Filter, X, Plus, MapPin, Users, Award } from "lucide-react";
+import { BLOG_POSTS } from "../utils/list";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.5 },
+  },
+};
+
+// Extended blog data with workshops and company visits
+const EXTENDED_BLOG_DATA = [
+  ...BLOG_POSTS,
+  {
+    id: 4,
+    title: "Google Developer Workshop - Cloud Technologies",
+    excerpt: "Attended an intensive workshop on Google Cloud Platform, learning about serverless architecture and modern deployment strategies.",
+    content: "This workshop provided hands-on experience with Google Cloud Platform services including Cloud Functions, App Engine, and Cloud Storage. We built a complete serverless application and learned about best practices for scalable cloud architecture.",
+    date: "2024-01-25",
+    readTime: "Workshop",
+    tags: ["Google Cloud", "Serverless", "Workshop"],
+    type: "workshop",
+    location: "Google Bangalore Office",
+    organizer: "Google Developers",
+    featured: true,
+    image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: 5,
+    title: "Microsoft Azure DevOps Bootcamp",
+    excerpt: "Comprehensive bootcamp covering CI/CD pipelines, Azure DevOps services, and modern software development practices.",
+    content: "A 3-day intensive bootcamp covering Azure DevOps, including Azure Pipelines, Azure Repos, and Azure Boards. Learned to implement complete CI/CD workflows and automated testing strategies.",
+    date: "2024-01-18",
+    readTime: "3-day Bootcamp",
+    tags: ["Azure", "DevOps", "CI/CD", "Bootcamp"],
+    type: "workshop",
+    location: "Microsoft Technology Center",
+    organizer: "Microsoft",
+    featured: true,
+    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: 6,
+    title: "Company Visit - Infosys Mysore Campus",
+    excerpt: "Educational visit to Infosys Mysore campus to understand enterprise software development practices and company culture.",
+    content: "Visited the Infosys Mysore campus as part of an educational program. Learned about their software development lifecycle, agile practices, and got insights into working in a large-scale enterprise environment.",
+    date: "2024-01-12",
+    readTime: "Company Visit",
+    tags: ["Infosys", "Enterprise", "Company Visit"],
+    type: "visit",
+    location: "Infosys Mysore Campus",
+    organizer: "Infosys",
+    featured: false,
+    image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: 7,
+    title: "AWS Community Day Bangalore",
+    excerpt: "Participated in AWS Community Day, learning about latest AWS services and networking with cloud professionals.",
+    content: "Attended AWS Community Day Bangalore where I learned about the latest AWS services, serverless computing, and cloud-native development. Great networking opportunity with fellow developers and AWS experts.",
+    date: "2024-01-08",
+    readTime: "Community Event",
+    tags: ["AWS", "Cloud", "Community", "Networking"],
+    type: "workshop",
+    location: "Bangalore",
+    organizer: "AWS User Group Bangalore",
+    featured: true,
+    image: "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800"
+  }
+];
+
+const BlogPage = () => {
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedTag, setSelectedTag] = useState("All");
+  const [selectedType, setSelectedType] = useState("All");
+
+  const allTags = ["All", ...new Set(EXTENDED_BLOG_DATA.flatMap(post => post.tags))];
+  const allTypes = ["All", "blog", "workshop", "visit"];
+  
+  const filteredPosts = EXTENDED_BLOG_DATA.filter(post => {
+    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesTag = selectedTag === "All" || post.tags.includes(selectedTag);
+    const matchesType = selectedType === "All" || post.type === selectedType;
+    return matchesSearch && matchesTag && matchesType;
+  });
+
+  const getTypeIcon = (type) => {
+    switch (type) {
+      case "workshop":
+        return Award;
+      case "visit":
+        return MapPin;
+      default:
+        return Tag;
+    }
+  };
+
+  const getTypeColor = (type) => {
+    switch (type) {
+      case "workshop":
+        return "bg-green-500";
+      case "visit":
+        return "bg-purple-500";
+      default:
+        return "bg-blue-500";
+    }
+  };
+
+  const BlogCard = ({ post }) => {
+    const TypeIcon = getTypeIcon(post.type);
+    
+    return (
+      <motion.article
+        variants={itemVariants}
+        whileHover={{ y: -10 }}
+        className="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-gray-600 transition-colors group cursor-pointer"
+        onClick={() => setSelectedPost(post)}
+      >
+        <div className="relative overflow-hidden">
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-48 object-cover transition-transform group-hover:scale-110"
+            loading="lazy"
+          />
+          <div className="absolute top-4 right-4 flex gap-2">
+            <span className={`px-3 py-1 ${getTypeColor(post.type)} text-white rounded-full text-xs font-semibold flex items-center gap-1`}>
+              <TypeIcon size={12} />
+              {post.type === 'blog' ? 'Blog' : post.type === 'workshop' ? 'Workshop' : 'Visit'}
+            </span>
+            {post.featured && (
+              <span className="px-3 py-1 bg-yellow-500 text-black rounded-full text-xs font-semibold">
+                Featured
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-400 mb-3">
+            <div className="flex items-center gap-1">
+              <Calendar size={14} />
+              {new Date(post.date).toLocaleDateString()}
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock size={14} />
+              {post.readTime}
+            </div>
+            {post.location && (
+              <div className="flex items-center gap-1">
+                <MapPin size={14} />
+                {post.location}
+              </div>
+            )}
+          </div>
+
+          <h3 className="text-lg sm:text-xl font-bold text-white mb-3 line-clamp-2">
+            {post.title}
+          </h3>
+          
+          <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+            {post.excerpt}
+          </p>
+
+          {post.organizer && (
+            <div className="flex items-center gap-1 text-sm text-blue-300 mb-3">
+              <Users size={14} />
+              Organized by: {post.organizer}
+            </div>
+          )}
+
+          <div className="flex flex-wrap gap-2 mb-4">
+            {post.tags.map((tag, i) => (
+              <span
+                key={i}
+                className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs flex items-center gap-1"
+              >
+                <Tag size={10} />
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex items-center text-blue-400 text-sm font-medium group-hover:text-blue-300">
+            Read More <ArrowRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </div>
+      </motion.article>
+    );
+  };
+
+  const BlogModal = ({ post, onClose }) => {
+    const TypeIcon = getTypeIcon(post.type);
+    
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          className="bg-gray-900 rounded-xl max-w-4xl max-h-[90vh] overflow-y-auto border border-gray-700 w-full"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="relative">
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full h-48 sm:h-64 object-cover"
+            />
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+            >
+              <X size={20} />
+            </button>
+            <div className="absolute top-4 left-4">
+              <span className={`px-3 py-1 ${getTypeColor(post.type)} text-white rounded-full text-sm font-semibold flex items-center gap-1`}>
+                <TypeIcon size={14} />
+                {post.type === 'blog' ? 'Blog Post' : post.type === 'workshop' ? 'Workshop' : 'Company Visit'}
+              </span>
+            </div>
+          </div>
+
+          <div className="p-6 sm:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-400 mb-4">
+              <div className="flex items-center gap-1">
+                <Calendar size={14} />
+                {new Date(post.date).toLocaleDateString()}
+              </div>
+              <div className="flex items-center gap-1">
+                <Clock size={14} />
+                {post.readTime}
+              </div>
+              {post.location && (
+                <div className="flex items-center gap-1">
+                  <MapPin size={14} />
+                  {post.location}
+                </div>
+              )}
+            </div>
+
+            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4">{post.title}</h1>
+            
+            {post.organizer && (
+              <div className="flex items-center gap-2 text-blue-300 mb-4">
+                <Users size={16} />
+                <span>Organized by: <strong>{post.organizer}</strong></span>
+              </div>
+            )}
+            
+            <div className="flex flex-wrap gap-2 mb-6">
+              {post.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="prose prose-invert max-w-none">
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed">{post.content}</p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  };
+
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
+    >
+      <div className="max-w-7xl mx-auto">
+        <motion.h1
+          variants={itemVariants}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+        >
+          Blog & Experiences
+        </motion.h1>
+
+        <motion.p
+          variants={itemVariants}
+          className="text-lg sm:text-xl text-gray-300 text-center mb-8 sm:mb-12 max-w-2xl mx-auto"
+        >
+          My thoughts on technology, workshop experiences, company visits, and learning journey
+        </motion.p>
+
+        {/* Search and Filters */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col lg:flex-row gap-4 mb-8 sm:mb-12"
+        >
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            <input
+              type="text"
+              placeholder="Search posts, workshops, visits..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none"
+            />
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-2">
+            <div className="flex items-center gap-2">
+              <Filter size={20} className="text-gray-400" />
+              <select
+                value={selectedType}
+                onChange={(e) => setSelectedType(e.target.value)}
+                className="px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:border-blue-500 focus:outline-none min-w-[120px]"
+              >
+                <option value="All">All Types</option>
+                <option value="blog">Blog Posts</option>
+                <option value="workshop">Workshops</option>
+                <option value="visit">Company Visits</option>
+              </select>
+            </div>
+            
+            <select
+              value={selectedTag}
+              onChange={(e) => setSelectedTag(e.target.value)}
+              className="px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:border-blue-500 focus:outline-none min-w-[120px]"
+            >
+              {allTags.map(tag => (
+                <option key={tag} value={tag}>{tag}</option>
+              ))}
+            </select>
+          </div>
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          variants={itemVariants}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 sm:mb-12"
+        >
+          {[
+            { label: "Blog Posts", value: EXTENDED_BLOG_DATA.filter(p => p.type === 'blog' || !p.type).length },
+            { label: "Workshops Attended", value: EXTENDED_BLOG_DATA.filter(p => p.type === 'workshop').length },
+            { label: "Company Visits", value: EXTENDED_BLOG_DATA.filter(p => p.type === 'visit').length },
+            { label: "Total Experiences", value: EXTENDED_BLOG_DATA.length },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="text-center p-4 bg-gray-800/30 rounded-lg border border-gray-700"
+            >
+              <div className="text-xl sm:text-2xl font-bold text-blue-400 mb-1">
+                {stat.value}
+              </div>
+              <div className="text-gray-300 text-xs sm:text-sm">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Blog Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {filteredPosts.map((post) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
+        </div>
+
+        {filteredPosts.length === 0 && (
+          <motion.div
+            variants={itemVariants}
+            className="text-center py-12"
+          >
+            <p className="text-gray-400 text-lg">No posts found matching your criteria.</p>
+          </motion.div>
+        )}
+
+        {/* Blog Modal */}
+        {selectedPost && (
+          <BlogModal
+            post={selectedPost}
+            onClose={() => setSelectedPost(null)}
+          />
+        )}
+      </div>
+    </motion.div>
+  );
+};
+
+export default BlogPage;
