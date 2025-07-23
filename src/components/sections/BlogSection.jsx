@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, Tag, ArrowRight, Search, Filter } from "lucide-react";
-import { BLOG_POSTS } from "../utils/list";
+import { Calendar, Clock, Tag, ArrowRight, Search, Filter, X } from "lucide-react";
+import { BLOG_POSTS } from "../../utils/list";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -49,6 +49,7 @@ export const BlogSection = () => {
           src={post.image}
           alt={post.title}
           className="w-full h-48 object-cover transition-transform group-hover:scale-110"
+          loading="lazy"
         />
         <div className="absolute top-4 right-4">
           {post.featured && (
@@ -59,8 +60,8 @@ export const BlogSection = () => {
         </div>
       </div>
 
-      <div className="p-6">
-        <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-400 mb-3">
           <div className="flex items-center gap-1">
             <Calendar size={14} />
             {new Date(post.date).toLocaleDateString()}
@@ -71,7 +72,7 @@ export const BlogSection = () => {
           </div>
         </div>
 
-        <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">
+        <h3 className="text-lg sm:text-xl font-bold text-white mb-3 line-clamp-2">
           {post.title}
         </h3>
         
@@ -110,25 +111,25 @@ export const BlogSection = () => {
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-gray-900 rounded-xl max-w-4xl max-h-[90vh] overflow-y-auto border border-gray-700"
+        className="bg-gray-900 rounded-xl max-w-4xl max-h-[90vh] overflow-y-auto border border-gray-700 w-full"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">
           <img
             src={post.image}
             alt={post.title}
-            className="w-full h-64 object-cover"
+            className="w-full h-48 sm:h-64 object-cover"
           />
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70"
+            className="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
           >
-            ×
+            <X size={20} />
           </button>
         </div>
 
-        <div className="p-8">
-          <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
+        <div className="p-6 sm:p-8">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-400 mb-4">
             <div className="flex items-center gap-1">
               <Calendar size={14} />
               {new Date(post.date).toLocaleDateString()}
@@ -139,7 +140,7 @@ export const BlogSection = () => {
             </div>
           </div>
 
-          <h1 className="text-3xl font-bold text-white mb-4">{post.title}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4">{post.title}</h1>
           
           <div className="flex flex-wrap gap-2 mb-6">
             {post.tags.map((tag, i) => (
@@ -153,7 +154,7 @@ export const BlogSection = () => {
           </div>
 
           <div className="prose prose-invert max-w-none">
-            <p className="text-gray-300 text-lg leading-relaxed">{post.content}</p>
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed">{post.content}</p>
           </div>
         </div>
       </motion.div>
@@ -165,19 +166,19 @@ export const BlogSection = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="py-20 px-4"
+      className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
         <motion.h2
           variants={itemVariants}
-          className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
         >
           Latest Blog Posts
         </motion.h2>
 
         <motion.p
           variants={itemVariants}
-          className="text-xl text-gray-300 text-center mb-12 max-w-2xl mx-auto"
+          className="text-lg sm:text-xl text-gray-300 text-center mb-8 sm:mb-12 max-w-2xl mx-auto"
         >
           Sharing insights, tutorials, and thoughts on web development, technology, and innovation
         </motion.p>
@@ -185,7 +186,7 @@ export const BlogSection = () => {
         {/* Search and Filter */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col md:flex-row gap-4 mb-12"
+          className="flex flex-col sm:flex-row gap-4 mb-8 sm:mb-12"
         >
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
@@ -203,7 +204,7 @@ export const BlogSection = () => {
             <select
               value={selectedTag}
               onChange={(e) => setSelectedTag(e.target.value)}
-              className="px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:border-blue-500 focus:outline-none"
+              className="px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white focus:border-blue-500 focus:outline-none min-w-[120px]"
             >
               {allTags.map(tag => (
                 <option key={tag} value={tag}>{tag}</option>
@@ -213,7 +214,7 @@ export const BlogSection = () => {
         </motion.div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredPosts.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}

@@ -10,7 +10,7 @@ import {
   TrendingUp,
   Filter
 } from "lucide-react";
-import { COLLABORATIONS } from "../utils/list";
+import { COLLABORATIONS } from "../../utils/list";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -78,14 +78,14 @@ export const CollaborationsSection = () => {
       <motion.div
         variants={itemVariants}
         whileHover={{ y: -10 }}
-        className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-gray-600 transition-colors group"
+        className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-gray-700 hover:border-gray-600 transition-colors group"
       >
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-4 gap-3">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
               <IconComponent size={24} className="text-blue-400" />
             </div>
-            <div>
+            <div className="min-w-0">
               <span className="text-sm text-gray-400">{collaboration.type}</span>
               <div className="flex items-center gap-2 mt-1">
                 <span
@@ -98,13 +98,18 @@ export const CollaborationsSection = () => {
             </div>
           </div>
           
-          <div className="flex items-center gap-1 text-gray-400 text-sm">
+          <div className="flex items-center gap-1 text-gray-400 text-sm flex-shrink-0">
             <Calendar size={14} />
-            {new Date(collaboration.date).toLocaleDateString()}
+            <span className="hidden sm:inline">
+              {new Date(collaboration.date).toLocaleDateString()}
+            </span>
+            <span className="sm:hidden">
+              {new Date(collaboration.date).toLocaleDateString('en-US', { month: 'short', year: '2-digit' })}
+            </span>
           </div>
         </div>
 
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+        <h3 className="text-lg sm:text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
           {collaboration.title}
         </h3>
         
@@ -124,13 +129,13 @@ export const CollaborationsSection = () => {
         </div>
 
         <div className="space-y-3">
-          <div className="flex items-center gap-2 text-sm text-gray-400">
-            <Users size={14} />
-            <span>Collaborators: {collaboration.collaborators.join(", ")}</span>
+          <div className="flex items-start gap-2 text-sm text-gray-400">
+            <Users size={14} className="mt-0.5 flex-shrink-0" />
+            <span className="break-words">Collaborators: {collaboration.collaborators.join(", ")}</span>
           </div>
           
-          <div className="flex items-center gap-2 text-sm text-green-400">
-            <TrendingUp size={14} />
+          <div className="flex items-start gap-2 text-sm text-green-400">
+            <TrendingUp size={14} className="mt-0.5 flex-shrink-0" />
             <span>{collaboration.impact}</span>
           </div>
         </div>
@@ -142,7 +147,7 @@ export const CollaborationsSection = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors"
+            className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors w-full sm:w-auto justify-center"
           >
             <ExternalLink size={16} />
             View Project
@@ -157,19 +162,19 @@ export const CollaborationsSection = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="py-20 px-4"
+      className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
         <motion.h2
           variants={itemVariants}
-          className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
         >
           Collaborations & Contributions
         </motion.h2>
 
         <motion.p
           variants={itemVariants}
-          className="text-xl text-gray-300 text-center mb-12 max-w-2xl mx-auto"
+          className="text-lg sm:text-xl text-gray-300 text-center mb-8 sm:mb-12 max-w-2xl mx-auto"
         >
           Working together with amazing teams and communities to build impactful solutions
         </motion.p>
@@ -177,7 +182,7 @@ export const CollaborationsSection = () => {
         {/* Filter */}
         <motion.div
           variants={itemVariants}
-          className="flex items-center justify-center gap-2 mb-12"
+          className="flex items-center justify-center gap-2 mb-8 sm:mb-12"
         >
           <Filter size={20} className="text-gray-400" />
           <select
@@ -192,7 +197,7 @@ export const CollaborationsSection = () => {
         </motion.div>
 
         {/* Collaborations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {filteredCollaborations.map((collaboration) => (
             <CollaborationCard key={collaboration.id} collaboration={collaboration} />
           ))}
@@ -210,7 +215,7 @@ export const CollaborationsSection = () => {
         {/* Stats */}
         <motion.div
           variants={itemVariants}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16"
         >
           {[
             { label: "Total Collaborations", value: COLLABORATIONS.length },
@@ -220,12 +225,12 @@ export const CollaborationsSection = () => {
           ].map((stat, index) => (
             <div
               key={index}
-              className="text-center p-6 bg-gray-800/30 rounded-lg border border-gray-700"
+              className="text-center p-4 sm:p-6 bg-gray-800/30 rounded-lg border border-gray-700"
             >
-              <div className="text-3xl font-bold text-blue-400 mb-2">
+              <div className="text-2xl sm:text-3xl font-bold text-blue-400 mb-2">
                 {stat.value}
               </div>
-              <div className="text-gray-300 text-sm">{stat.label}</div>
+              <div className="text-gray-300 text-xs sm:text-sm">{stat.label}</div>
             </div>
           ))}
         </motion.div>
