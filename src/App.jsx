@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigation } from "./components/layout/Navigation";
 import { PageNavigation } from "./components/layout/PageNavigation";
+import { Footer } from "./components/layout/Footer";
 import { AIChatbot } from "./components/ui/AIChatbot";
 
 // Import all pages
@@ -10,6 +11,7 @@ import SkillsPage from "./pages/SkillsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import BlogPage from "./pages/BlogPage";
 import CollaborationsPage from "./pages/CollaborationsPage";
+import AchievementsPage from "./pages/AchievementsPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 
@@ -27,11 +29,13 @@ const App = () => {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/collaborations" element={<CollaborationsPage />} />
+            <Route path="/achievements" element={<AchievementsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
 
+        <Footer />
         <AIChatbot />
 
         {/* Background elements */}

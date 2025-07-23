@@ -66,8 +66,9 @@ export const SECTION_LIST = [
   { id: 3, displayText: "PROJECTS", sectionID: "projects", icon: Folder },
   { id: 4, displayText: "BLOG", sectionID: "blog", icon: BookOpen },
   { id: 5, displayText: "COLLABORATIONS", sectionID: "collaborations", icon: Users },
-  { id: 6, displayText: "ABOUT", sectionID: "about", icon: User },
-  { id: 7, displayText: "CONTACT", sectionID: "contact", icon: MessageCircle },
+  { id: 6, displayText: "ACHIEVEMENTS", sectionID: "achievements", icon: Award },
+  { id: 7, displayText: "ABOUT", sectionID: "about", icon: User },
+  { id: 8, displayText: "CONTACT", sectionID: "contact", icon: MessageCircle },
 ];
 
 const TECH_ICONS = {
@@ -292,5 +293,139 @@ export const COLLABORATIONS = [
     link: "https://marketplace.visualstudio.com/items?itemName=your-extension",
     collaborators: ["Developer Community", "VS Code Team"],
     impact: "5,000+ active installations"
+  }
+];
+
+export const CODING_PROFILES = [
+  {
+    id: 1,
+    platform: "LeetCode",
+    username: "likhitha_j",
+    profileUrl: "https://leetcode.com/likhitha_j/",
+    stats: {
+      problemsSolved: "250+",
+      ranking: "Top 15%",
+      badges: ["50 Days Badge", "100 Days Badge"]
+    },
+    description: "Consistent problem solver with focus on algorithms and data structures",
+    color: "from-orange-500 to-yellow-500",
+    icon: "🧩"
+  },
+  {
+    id: 2,
+    platform: "CodeChef",
+    username: "likhitha123",
+    profileUrl: "https://codechef.com/users/likhitha123",
+    stats: {
+      rating: "1650+",
+      stars: "3 Star",
+      contests: "25+ Contests"
+    },
+    description: "Active competitive programmer participating in monthly contests",
+    color: "from-brown-500 to-orange-500",
+    icon: "👨‍🍳"
+  },
+  {
+    id: 3,
+    platform: "GeeksforGeeks",
+    username: "likhithaj",
+    profileUrl: "https://auth.geeksforgeeks.org/user/likhithaj",
+    stats: {
+      problemsSolved: "180+",
+      articles: "5 Articles",
+      score: "850+"
+    },
+    description: "Regular contributor with articles on data structures and algorithms",
+    color: "from-green-500 to-emerald-500",
+    icon: "🤓"
+  },
+  {
+    id: 4,
+    platform: "HackerRank",
+    username: "likhitha_jagadeesh",
+    profileUrl: "https://hackerrank.com/likhitha_jagadeesh",
+    stats: {
+      badges: "15+ Badges",
+      stars: "5 Star (Python)",
+      rank: "Gold Badge"
+    },
+    description: "Certified in Python, SQL, and Problem Solving domains",
+    color: "from-green-600 to-blue-600",
+    icon: "🏆"
+  }
+];
+
+export const CERTIFICATES = [
+  {
+    id: 1,
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    date: "2024-01-15",
+    credentialId: "AWS-CCP-2024-001",
+    verifyUrl: "https://aws.amazon.com/verification",
+    description: "Foundational understanding of AWS Cloud services and architecture",
+    image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=400",
+    skills: ["Cloud Computing", "AWS Services", "Cloud Architecture"],
+    type: "Cloud"
+  },
+  {
+    id: 2,
+    title: "Google Cloud Professional Developer",
+    issuer: "Google Cloud",
+    date: "2024-01-10",
+    credentialId: "GCP-PD-2024-002",
+    verifyUrl: "https://cloud.google.com/certification",
+    description: "Professional-level certification in Google Cloud Platform development",
+    image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=400",
+    skills: ["Google Cloud", "Kubernetes", "Cloud Functions"],
+    type: "Cloud"
+  },
+  {
+    id: 3,
+    title: "Meta Front-End Developer Certificate",
+    issuer: "Meta (Facebook)",
+    date: "2023-12-20",
+    credentialId: "META-FE-2023-003",
+    verifyUrl: "https://coursera.org/verify/professional-cert",
+    description: "Comprehensive front-end development program covering React, JavaScript, and UX/UI",
+    image: "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400",
+    skills: ["React", "JavaScript", "HTML/CSS", "UX/UI Design"],
+    type: "Development"
+  },
+  {
+    id: 4,
+    title: "MongoDB Developer Certification",
+    issuer: "MongoDB University",
+    date: "2023-12-15",
+    credentialId: "MONGO-DEV-2023-004",
+    verifyUrl: "https://university.mongodb.com/certification",
+    description: "Database design, development, and administration with MongoDB",
+    image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400",
+    skills: ["MongoDB", "Database Design", "NoSQL", "Aggregation"],
+    type: "Database"
+  },
+  {
+    id: 5,
+    title: "Cisco Networking Essentials",
+    issuer: "Cisco Networking Academy",
+    date: "2023-11-30",
+    credentialId: "CISCO-NET-2023-005",
+    verifyUrl: "https://cisco.netacad.com/verification",
+    description: "Fundamental networking concepts and Cisco networking technologies",
+    image: "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=400",
+    skills: ["Networking", "TCP/IP", "Routing", "Switching"],
+    type: "Networking"
+  },
+  {
+    id: 6,
+    title: "Python for Data Science",
+    issuer: "IBM",
+    date: "2023-11-15",
+    credentialId: "IBM-PY-DS-2023-006",
+    verifyUrl: "https://ibm.com/training/verification",
+    description: "Data analysis, visualization, and machine learning with Python",
+    image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=400",
+    skills: ["Python", "Data Analysis", "Pandas", "NumPy", "Matplotlib"],
+    type: "Data Science"
   }
 ];
