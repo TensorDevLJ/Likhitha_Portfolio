@@ -72,15 +72,20 @@ export const HeroSection = () => (
 
     <div className="max-w-4xl mx-auto text-center relative z-10">
       <motion.div variants={itemVariants} className="mb-6 sm:mb-8">
-        <motion.div
-          animate={floatingAnimation}
-          className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-6 sm:mb-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 p-1"
-        >
-          <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-2xl sm:text-4xl">
-            👨‍💻
-          </div>
-        </motion.div>
-      </motion.div>
+  <motion.div
+    animate={floatingAnimation}
+    className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-6 sm:mb-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 p-1 flex items-center justify-center"
+  >
+    <div className="w-full h-full rounded-full overflow-hidden">
+      <img
+        src="/images/image1.jpg"
+        alt="profile"
+        className="w-full h-full object-cover"
+      />
+    </div>
+  </motion.div>
+</motion.div>
+
 
       <motion.h1
         variants={itemVariants}
@@ -118,7 +123,8 @@ export const HeroSection = () => (
         </Link>
 
         <motion.a
-          href="#"
+            href="/Likhitha_Resume.pdf"
+  download="Likhitha_Resume.pdf"
           whileHover={{
             scale: 1.05,
             boxShadow: "0 10px 25px rgba(255, 255, 255, 0.1)",
@@ -136,9 +142,9 @@ export const HeroSection = () => (
         className="flex justify-center gap-4 sm:gap-6 mt-8 sm:mt-12"
       >
         {[
-          { Icon: Github, href: "#", label: "GitHub" },
-          { Icon: Linkedin, href: "#", label: "LinkedIn" },
-          { Icon: Mail, href: "#", label: "Email" }
+          { Icon: Github, href: "https://github.com/TensorDevLJ", label: "GitHub" },
+          { Icon: Linkedin, href: "https://www.linkedin.com/in/likhitha-j-362a0925b/", label: "LinkedIn" },
+          { Icon: Mail, href: "likhithaj.dev@gmail.com", label: "Email" }
         ].map(({ Icon, href, label }, index) => (
           <motion.a
             key={index}
