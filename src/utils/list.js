@@ -351,9 +351,9 @@ export const CODING_PROFILES = [
     id: 1,
     platform: "LeetCode",
     username: "likhitha_j",
-    profileUrl: "https://leetcode.com/likhitha_j/",
+    profileUrl: "https://leetcode.com/u/busydev/",
     stats: {
-      problemsSolved: "250+",
+      problemsSolved: "200+",
       ranking: "Top 15%",
       badges: ["50 Days Badge", "100 Days Badge"]
     },
@@ -365,7 +365,7 @@ export const CODING_PROFILES = [
     id: 2,
     platform: "CodeChef",
     username: "likhitha123",
-    profileUrl: "https://codechef.com/users/likhitha123",
+    profileUrl: "https://www.codechef.com/users/likhitha_j",
     stats: {
       rating: "1650+",
       stars: "3 Star",
@@ -379,7 +379,7 @@ export const CODING_PROFILES = [
     id: 3,
     platform: "GeeksforGeeks",
     username: "likhithaj",
-    profileUrl: "https://auth.geeksforgeeks.org/user/likhithaj",
+    profileUrl: "https://www.geeksforgeeks.org/user/likhithafvee/",
     stats: {
       problemsSolved: "180+",
       articles: "5 Articles",
@@ -392,8 +392,8 @@ export const CODING_PROFILES = [
   {
     id: 4,
     platform: "HackerRank",
-    username: "likhitha_jagadeesh",
-    profileUrl: "https://hackerrank.com/likhitha_jagadeesh",
+    username: "@likhithajlikhi",
+    profileUrl: "https://www.hackerrank.com/profile/likhithajlikhi",
     stats: {
       badges: "15+ Badges",
       stars: "5 Star (Python)",
