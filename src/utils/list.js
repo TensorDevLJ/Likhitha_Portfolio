@@ -131,7 +131,7 @@ export const PROJECTS = [
     image: "images/image2.png",
   },
   {
-    title: "EmpowerHER – Women Empowerment & Healing Platform 🌸",
+    title: "EmpowerHER – Women Empowerment & Healing Platform ",
     description:
       "A safe, anonymous, and empowering space for women to share experiences, express emotions, and find strength in community. Includes secure authentication, AES-encrypted data, SOS alerts, and wellness tools for mental and emotional support..",
     tech: [
