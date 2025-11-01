@@ -97,12 +97,16 @@ export const AboutSection = () => (
           animate={floatingAnimation}
           className="relative order-1 lg:order-2"
         >
-          <div className="w-64 h-64 sm:w-80 sm:h-80 mx-auto bg-gradient-to-br from-blue-400 to-purple-400 rounded-full p-1">
-            <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center text-6xl sm:text-8xl">
-              👨‍💻
-            </div>
-          </div>
-          
+       <div className="w-64 h-64 sm:w-80 sm:h-80 mx-auto bg-gradient-to-br from-blue-400 to-purple-400 rounded-full p-1">
+  <div className="w-full h-full rounded-full bg-gray-900 overflow-hidden flex items-center justify-center">
+    <img
+      src="/images/image1.jpg"
+      alt="profile"
+      className="w-full h-full object-cover"
+    />
+  </div>
+</div>
+
           {/* Floating Elements */}
           <div className="absolute -top-4 -right-4 w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center">
             <span className="text-2xl">⚡</span>
