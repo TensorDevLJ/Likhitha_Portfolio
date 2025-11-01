@@ -37,19 +37,19 @@ export const Footer = () => {
     {
       name: "GitHub",
       icon: Github,
-      href: "https://github.com/Likhithaj123",
+      href: "https://github.com/TensorDevLJ",
       color: "hover:text-gray-400"
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: "https://linkedin.com/in/likhitha-jagadeesh",
+      href: "https://www.linkedin.com/in/likhitha-j-362a0925b/",
       color: "hover:text-blue-400"
     },
     {
       name: "Email",
       icon: Mail,
-      href: "mailto:likhitha@example.com",
+      href: "mailto:likhithaj.dev@gmail.com",
       color: "hover:text-green-400"
     }
   ];

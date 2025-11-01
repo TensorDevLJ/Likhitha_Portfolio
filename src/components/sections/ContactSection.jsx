@@ -89,8 +89,8 @@ export const ContactSection = () => {
                 {
                   icon: Mail,
                   label: "Email",
-                  value: "likhitha@example.com",
-                  href: "mailto:likhitha@example.com"
+                  value: "likhithaj.dev@gmail.com",
+                  href: "mailto:likhithajdev@gmail.com"
                 },
                 {
                   icon: Phone,
@@ -135,8 +135,8 @@ export const ContactSection = () => {
               <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
               <div className="flex gap-4">
                 {[
-                  { icon: Github, href: "#", label: "GitHub", color: "hover:text-gray-400" },
-                  { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-400" },
+                  { icon: Github, href: "https://github.com/TensorDevLJ", label: "GitHub", color: "hover:text-gray-400" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/likhitha-j-362a0925b/", label: "LinkedIn", color: "hover:text-blue-400" },
                   { icon: MessageCircle, href: "#", label: "Twitter", color: "hover:text-blue-400" },
                 ].map((social, index) => (
                   <motion.a
