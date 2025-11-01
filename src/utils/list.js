@@ -1,5 +1,5 @@
 // ✅ Fixed version of your portfolio constants file with corrected `PROJECT_LIST`
-
+import { SiTypescript } from "react-icons/si";
 import {
   Globe,
   Mail,
@@ -62,6 +62,7 @@ import {
   SiVite,
   SiGooglegemini,
 } from "react-icons/si";
+import { image } from "framer-motion/client";
 
 export const SECTION_LIST = [
   { id: 1, displayText: "HOME", sectionID: "home", icon: Home },
@@ -97,6 +98,7 @@ const TECH_ICONS = {
   },
   TSParticles: { component: ActivitySquare, name: "TSParticles" },
   Python: { component: Cpu, name: "Python" },
+   TypeScript: { component: SiTypescript, name: "TypeScript" },
 };
 
 export const TECH_STACK = [
@@ -124,22 +126,25 @@ export const PROJECTS = [
     ],
     status: "Live",
     featured: true,
-    liveLink: "https://wanderlust-airbnb-6gli.onrender.com/",
-    sourceLink: "https://github.com/Likhithaj123/wanderlust_airbnb.git",
+    liveLink: "https://wanderlust-likhithajagadeesh.onrender.com/",
+    sourceLink: "https://github.com/TensorDevLJ/Wanderlust-Airbnb-full-stack-Clone.git",
+    image: "images/image2.png",
   },
   {
-    title: "Movie Recommender System",
+    title: "EmpowerHER – Women Empowerment & Healing Platform 🌸",
     description:
-      "Content-based recommendation system built using Python, Streamlit, and TMDB API. Provides trailer embedding, genre filters, and user login.",
+      "A safe, anonymous, and empowering space for women to share experiences, express emotions, and find strength in community. Includes secure authentication, AES-encrypted data, SOS alerts, and wellness tools for mental and emotional support..",
     tech: [
-      TECH_ICONS["OpenAI API"],
+      TECH_ICONS["React"],
+       TECH_ICONS["Vite"],
       TECH_ICONS.Firebase,
       TECH_ICONS["Tailwind CSS"],
     ],
     status: "Live",
     featured: true,
-    liveLink: "https://movie-recommendation-app-demo.vercel.app/",
-    sourceLink: "https://github.com/Likhithaj123/Movie_recom_system.git",
+    liveLink: "https://risewithin.netlify.app/",
+    sourceLink: "https://github.com/TensorDevLJ/InnerBloom-Women-Empowerment-Healing-Platform.git",
+     image: "images/image3.png",
   },
   {
     title: "Real-Time Traffic Management System (YOLOv8)",
@@ -153,7 +158,8 @@ export const PROJECTS = [
     featured: true,
     liveLink:
       "https://unstop.com/hackathons/i-solve-nitte-meenakshi-institute-of-technology-bangalore-karnataka-1060100/case-submissions/405868",
-    sourceLink: "#",
+    sourceLink: "https://github.com/TensorDevLJ/traffic-management.git",
+    image: "images/image4.png",
   },
   {
     title: "Sales Forecasting - Cisco League",
@@ -166,7 +172,24 @@ export const PROJECTS = [
     featured: false,
     liveLink:
       "https://cisco.sharepoint.com/:u:/r/sites/CiscoForecastLeagueCompetition/SitePages/Phase-1-results---BIT.aspx?csf=1&web=1&e=YGp5WQ",
-    sourceLink: "#",
+    sourceLink: "https://credsverse.com/credentials/dbc0107a-679a-4586-b03a-aa1a83264eb7?preview=1",
+    image: "images/image5.jpg",
+  },
+  {
+    title: "EEG-Based Brain-Computer Interface For Emotion Recognition",
+      description:  "An AI-powered backend for EEG-based emotion and depression analysis. Built with FastAPI and Transformer models, it processes EEG features from CSV uploads, performs model inference, and returns diagnostic graphs with explainable results.",
+    tech: [
+      TECH_ICONS.React,
+      TECH_ICONS.Firebase,
+      TECH_ICONS["TypeScript"],
+       TECH_ICONS.Python, 
+      TECH_ICONS["OpenAI API"],
+    ],
+    status: "Live",
+    featured: true,
+    liveLink: "#",
+    sourceLink: "https://github.com/TensorDevLJ/EEG-Based-Brain-Computer-Interface-For-Emotion-Recognition.git",
+    image: "images/image10.jpg",
   },
   {
     title: "Namaste Notebook",
@@ -181,7 +204,8 @@ export const PROJECTS = [
     status: "Live",
     featured: true,
     liveLink: "https://namastenotebook.vercel.app/",
-    sourceLink: "https://github.com/Likhithaj123/namaste-notebook",
+    sourceLink: "https://github.com/TensorDevLJ/namaste-notebook.git",
+    image: "images/image6.png",
   },
   {
     title: "TasteBytes - Swiggy Clone",
@@ -196,22 +220,42 @@ export const PROJECTS = [
     status: "Live",
     featured: true,
     liveLink: "https://sanlik-soulspice.netlify.app/",
-    sourceLink: "https://github.com/Likhithaj123/Namaste_React.git",
+    sourceLink: "https://github.com/TensorDevLJ/Namaste_React_SWIGGY_USING_LIVE_API.git",
+    image: "images/image7.png",
   },
   {
-    title: "Netflix-GPT",
+    title: "CyberGuard-AI-Full-Stack-Risk-Assessment-System",
     description:
-      "An AI-powered movie suggestion app using the OpenAI API to deliver personalized recommendations in a Netflix-style interface.",
+      "An AI-powered Full Stack Risk Assessment System that evaluates cybersecurity risks using OpenAI's API, built with React, TypeScript, Firebase, and Python.",
     tech: [
       TECH_ICONS.React,
       TECH_ICONS.Firebase,
-      TECH_ICONS["Tailwind CSS"],
+      TECH_ICONS["TypeScript"],
+       TECH_ICONS.Python, 
       TECH_ICONS["OpenAI API"],
     ],
-    status: "Paused",
+    status: "Completed",
     featured: true,
-    liveLink: "https://netflix-gpt.example.com/",
-    sourceLink: "https://github.com/Likhithaj123/netflix-gpt.git",
+    liveLink: "#",
+    sourceLink: "https://github.com/TensorDevLJ/CyberGuard-AI-Full-Stack-Risk-Assessment-System.git",
+    image: "images/image9.png",
+  },
+    {
+    title: "FastAPI system for PDF Question Answering using RAG Pinecone Llama3",
+    description:
+      "A production-ready FastAPI system that processes PDF documents and answers questions using RAG (Retrieval-Augmented Generation).",
+    tech: [
+      TECH_ICONS.React,
+      TECH_ICONS.Firebase,
+      TECH_ICONS["TypeScript"],
+       TECH_ICONS.Python, 
+      TECH_ICONS["OpenAI API"],
+    ],
+    status: "Completed",
+    featured: true,
+    liveLink: "#",
+    sourceLink: "https://github.com/TensorDevLJ/CyberGuard-AI-Full-Stack-Risk-Assessment-System.git",
+    image: "images/image8.jpg",
   },
 ];
 

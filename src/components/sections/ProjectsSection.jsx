@@ -88,11 +88,12 @@ export const ProjectsSection = () => {
             >
               <div className="relative overflow-hidden">
                 <img
-                  src={PREVIEW_IMAGE_GENRATE_URL + project.liveLink}
-                  alt={project.title}
-                  className="w-full h-48 object-cover transition-transform group-hover:scale-110"
-                  loading="lazy"
-                />
+               src={project.image ? project.image : PREVIEW_IMAGE_GENRATE_URL + project.liveLink}
+               alt={project.title}
+               className="w-full h-48 object-cover transition-transform group-hover:scale-110"
+                loading="lazy"
+               />
+
                 <div className="absolute top-4 right-4">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-semibold ${
@@ -124,14 +125,17 @@ export const ProjectsSection = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.slice(0, 3).map((tech, i) => (
-                    <span
-                      key={i}
+                  {project.tech.slice(0, 3).map((tech, i) =>
+                 tech ? (
+                  <span
+                    key={i}
                       className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs"
-                    >
-                      {tech.name}
-                    </span>
-                  ))}
+                     >
+                     {tech.name}
+                  </span>
+                  ) : null
+                 )}
+
                   {project.tech.length > 3 && (
                     <span className="px-2 py-1 bg-gray-500/20 text-gray-300 rounded text-xs">
                       +{project.tech.length - 3} more
