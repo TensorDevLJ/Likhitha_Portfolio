@@ -18,9 +18,8 @@ import {
   Component,
   Briefcase,
   GraduationCap,
-  Code2Icon,
+  Code2,
   FolderCode,
-  ActivitySquareIcon,
   Award,
   Folder,
   User,
@@ -28,7 +27,11 @@ import {
   Home,
   BookOpen,
   Users,
+  Bolt,
 } from "lucide-react";
+
+
+
 import {
   FaGithub,
   FaHackerrank,
@@ -92,7 +95,7 @@ const TECH_ICONS = {
     component: SiGooglegemini,
     name: "Google Generative AI",
   },
-  TSParticles: { component: ActivitySquareIcon, name: "TSParticles" },
+  TSParticles: { component: ActivitySquare, name: "TSParticles" },
   Python: { component: Cpu, name: "Python" },
 };
 
@@ -103,6 +106,9 @@ export const TECH_STACK = [
   { name: "Python", color: "#3776AB", icon: Cpu },
   { name: "AWS", color: "#FF9900", icon: Globe },
   { name: "Express", color: "#000000", icon: Code },
+  { name: "JAVA", color: "#000000", icon: Code2 }, 
+  { name: "Tailwind CSS", color: "#38B2AC", icon: LayoutPanelLeft },
+  { name: "Firebase", color: "#FFCA28", icon: Bolt },
 ];
 export const PROJECTS = [
   {

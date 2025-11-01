@@ -43,7 +43,7 @@ export const SkillsSection = () => (
             key={tech.name}
             variants={itemVariants}
             whileHover={{ scale: 1.1, y: -10 }}
-            className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 text-center border border-gray-700 hover:border-gray-600 transition-colors"
+            className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-7 text-center border border-gray-700 hover:border-gray-600 transition-colors"
           >
             <div
               className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-lg flex items-center justify-center"
@@ -67,7 +67,7 @@ export const SkillsSection = () => (
         {[
           {
             title: "Frontend",
-            skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux"],
+            skills: ["React", "Next.js", "JavaScript","Tailwind CSS", "Redux"],
             color: "from-blue-500 to-cyan-500"
           },
           {
@@ -77,7 +77,7 @@ export const SkillsSection = () => (
           },
           {
             title: "Tools & Others",
-            skills: ["Git", "Docker", "AWS", "Figma", "Jest"],
+            skills: ["Git",  "AWS", "Figma", "Canva"],
             color: "from-purple-500 to-pink-500"
           }
         ].map((category, index) => (
