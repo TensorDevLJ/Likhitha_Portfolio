@@ -7,7 +7,8 @@ This portfolio showcases my projects, skills, blogs, and achievements as a softw
 
 ## 🌐 Live Demo
 
-[View Portfolio](https://likhithajagadeesh.netlify.app/)  
+- [Netlify](https://likhithajagadeesh.netlify.app/) 
+- [vercel](https://likhitha-portfolio-ten.vercel.app/)
 
 
 ---
